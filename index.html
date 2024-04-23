@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Tasks</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <h2>1. Palindrome Check:</h2>
+    <p id="palindromeResult"></p>
+
+    <h2>2. Minimum and Maximum Numbers:</h2>
+    <p id="minMaxResult"></p>
+
+    <h2>3. Missing Number Identification:</h2>
+    <p id="missingNumberResult"></p>
+
+<script>
+    // 1. Palindrome Check
+    function isPalindrome(str) {
+        let left = 0;
+        let right = str.length - 1;
+
+        while (left < right) {
+            if (str[left] !== str[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    const testString = "racecar";
+    const isPalindromeResult = isPalindrome(testString);
+    document.getElementById("palindromeResult").innerText = `'${testString}' is a palindrome: ${isPalindromeResult}`;
+
+    // 2. Minimum and Maximum Numbers
+    function findMinMax(numbers) {
+        let min = numbers[0];
+        let max = numbers[0];
+
+        for (let i = 1; i < numbers.length; i++) {
+            if (numbers[i] < min) {
+                min = numbers[i];
+            }
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        return { min, max };
+    }
+
+    const numberSeries = [3, 7, 2, 9, 5];
+    const { min, max } = findMinMax(numberSeries);
+    document.getElementById("minMaxResult").innerText = `Minimum: ${min}, Maximum: ${max}`;
+
+    // 3. Missing Number Identification
+    function findMissingNumber(numbers) {
+        for (let i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i + 1] - numbers[i] !== 1) {
+                return numbers[i] + 1;
+            }
+        }
+        return "No missing number found.";
+    }
+
+    const series = [11, 12, 14, 15, 16, 18, 19, 20];
+    const missingNumber = findMissingNumber(series);
+    document.getElementById("missingNumberResult").innerText = `Missing number: ${missingNumber}`;
+</script>
+</body>
+</html>
